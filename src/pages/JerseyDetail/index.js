@@ -1,20 +1,33 @@
-import { Text, StyleSheet, View } from 'react-native'
-import React, { Component } from 'react'
-import {colors, fonts, responsiveHeight, heightMobileUI, numberWithCommas} from '../../utils';
-import {CardLiga, JerseySlider, Tombol} from '../../components';
-import { RFValue } from "react-native-responsive-fontsize";
-
+import {Text, StyleSheet, View} from 'react-native';
+import React, {Component} from 'react';
+import {
+  colors,
+  fonts,
+  responsiveHeight,
+  heightMobileUI,
+  numberWithCommas,
+  responsiveWidth,
+} from '../../utils';
+import {
+  CardLiga,
+  Inputan,
+  Jarak,
+  JerseySlider,
+  Pilihan,
+  Tombol,
+} from '../../components';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default class JerseyDetail extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
       jersey: this.props.route.params.jersey,
-      images: this.props.route.params.jersey.gambar
-    }
+      images: this.props.route.params.jersey.gambar,
+    };
   }
-  
+
   render() {
     const {navigation} = this.props;
     // console.log("Parameter: ===", this.props.route.params);
@@ -24,39 +37,76 @@ export default class JerseyDetail extends Component {
       <View style={styles.page}>
         <View style={styles.button}>
           {/* <Tombol icon="arrow-left" padding={7} onPress={()=> this.props.navigation.goBack()}/> */}
-          <Tombol icon="arrow-left" padding={7} onPress={()=> navigation.goBack()}/>
+          <Tombol
+            icon="arrow-left"
+            padding={7}
+            onPress={() => navigation.goBack()}
+          />
         </View>
-        <JerseySlider images={images}/>
+        <JerseySlider images={images} />
 
         <View style={styles.container}>
           <View style={styles.liga}>
-            <CardLiga liga={jersey.liga}/>
+            <CardLiga liga={jersey.liga} />
           </View>
-          
+
           <View style={styles.desc}>
             <Text style={styles.nama}>{jersey.nama}</Text>
-            <Text style={styles.harga}>Harga : Rp. {numberWithCommas(jersey.harga)}</Text>
+            <Text style={styles.harga}>
+              Harga : Rp. {numberWithCommas(jersey.harga)}
+            </Text>
 
-            <View style={styles.garis}/>
+            <View style={styles.garis} />
 
             <View style={styles.wrapperJenisBerat}>
               <Text style={styles.jenisBerat}>Jenis: {jersey.jenis}</Text>
               <Text style={styles.jenisBerat}>Berat: {jersey.berat}</Text>
             </View>
-            
+
+            <View style={styles.wrapperInput}>
+              <Inputan
+                label="Jumlah"
+                width={responsiveWidth(166)}
+                height={responsiveHeight(43)}
+                fontSize={13}
+              />
+              <Pilihan
+                label="Pilih Ukuran"
+                width={responsiveWidth(166)}
+                height={responsiveHeight(43)}
+                fontSize={13}
+                datas={jersey.ukuran}
+              />
+            </View>
+
+            <Inputan
+              textarea
+              label="Keterangan"
+              fontSize={13}
+              placeholder="isi jika ingin menambahkan Name Tag (nama & nomor punggung)"
+            />
+
+            <Jarak height={15} />
+            <Tombol
+              title="Masukkan Keranjang"
+              type="textIcon"
+              icon="keranjang-putih"
+              padding={responsiveHeight(17)}
+              fontSize={18}
+            />
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  page:{
+  page: {
     flex: 1,
     backgroundColor: colors.primary,
   },
-  container:{
+  container: {
     position: 'absolute',
     bottom: 0,
     height: responsiveHeight(465),
@@ -65,40 +115,45 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
   },
-  button:{
+  button: {
     position: 'absolute',
     marginTop: 30,
     marginLeft: 30,
     zIndex: 1,
   },
-  desc:{
+  desc: {
     marginHorizontal: 30,
   },
-  nama:{
+  nama: {
     fontSize: RFValue(24, heightMobileUI),
     fontFamily: fonts.primary.bold,
     textTransform: 'capitalize',
   },
-  harga:{
+  harga: {
     fontSize: RFValue(24, heightMobileUI),
     fontFamily: fonts.primary.light,
   },
-  liga:{
+  liga: {
     alignItems: 'flex-end',
     marginRight: 30,
     marginTop: -30,
   },
-  garis:{
+  garis: {
     borderWidth: 0.5,
     marginVertical: 5,
   },
-  wrapperJenisBerat:{
+  wrapperJenisBerat: {
     flexDirection: 'row',
     // justifyContent: 'space-between',
+    marginBottom: 5,
   },
-  jenisBerat:{
+  jenisBerat: {
     fontSize: 13,
     fontFamily: fonts.primary.regular,
     marginRight: 30,
-  }
-})
+  },
+  wrapperInput: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+});

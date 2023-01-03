@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, ScrollView} from 'react-native'
 import React, { Component } from 'react'
-import { BannerSlider, HeaderComponent, ListJerseys, ListLiga, Tombol } from '../../components'
+import { HeaderComponent, ListJerseys, ListLiga } from '../../components'
 import { colors, fonts } from '../../utils'
 import {dummyJerseys, dummyLigas} from '../../data'
 import { Jarak } from '../../components'
@@ -16,10 +16,12 @@ export default class ListJersey extends Component {
   }
 
   render() {
-    const {ligas, jerseys} = this.state
+    const {ligas, jerseys} = this.state;
+    const {navigation} = this.props
+
     return (
       <View style={styles.page}>
-        <HeaderComponent/>
+        <HeaderComponent navigation={navigation} />
 
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
           

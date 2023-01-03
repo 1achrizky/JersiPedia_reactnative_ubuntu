@@ -14,6 +14,7 @@ import IconSignOut from './sign-out.svg';
 import IconHistory from './history.svg';
 import IconBack from './arrow-left.svg';
 import IconKeranjangPutih from './keranjang-putih.svg';
+import IconHapus from './hapus.svg';
 
 export {
     IconHome, IconHomeAktif,

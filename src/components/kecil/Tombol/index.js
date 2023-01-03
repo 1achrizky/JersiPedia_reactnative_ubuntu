@@ -3,6 +3,7 @@ import React from 'react'
 import { IconBack, IconKeranjang } from '../../../assets'
 import { colors } from '../../../utils'
 import TextOnly from './TextOnly'
+import TextIcon from './TextIcon'
 
 const Tombol = (props) => {
   const Icon = () => {
@@ -15,9 +16,11 @@ const Tombol = (props) => {
 		return <IconKeranjang/>
 	}
 
+	// const {icon, totalKeranjang, padding, type, onPress, title} = props;
 	const {icon, totalKeranjang, padding, type, onPress} = props;
 
 	if(type === "text") return <TextOnly {...props} />
+	else if(type === "textIcon") return <TextIcon {...props} />
 
   return (
     <TouchableOpacity style={styles.container(padding)} onPress={onPress}>
