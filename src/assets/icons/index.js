@@ -24,5 +24,5 @@ export {
 
     IconArrowRight, IconChangePassword, IconEditProfile,
     IconSignOut, IconHistory,
-    IconBack, IconKeranjangPutih,
+    IconBack, IconKeranjangPutih, IconHapus
 }

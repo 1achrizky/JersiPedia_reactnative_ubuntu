@@ -29,7 +29,11 @@ export default class Home extends Component {
             <Text style={styles.label}>Pilih Liga</Text>
             <ListLiga ligas={ligas} />
           </View>
-          
+
+          {/* <Text style={{fontFamily:'CourierPrime-Italic',fontSize:30,}}>Testing</Text>
+          <Text>Testing</Text>
+          <Text>Testing</Text> */}
+
           <View style={styles.pilihJersey}>
             {/* <Text style={styles.label}>Pilih <Text style={styles.boldLabel}>Jersey</Text> Yang Anda Inginkan</Text> */}
             <Text style={styles.label}>Pilih <Text style={styles.boldLabel}>Jersey</Text> Yang Anda Inginkan</Text>
